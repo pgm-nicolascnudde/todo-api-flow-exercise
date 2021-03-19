@@ -13,7 +13,7 @@ export default class TodoDb {
    */
   async add(description) {
     try {
-      return await knexTodos('todos').insert({ description });
+      return await knexTodos('todos').insert({ description, reminder });
     } catch (e) {
       return Logger.error(e.message);
     }

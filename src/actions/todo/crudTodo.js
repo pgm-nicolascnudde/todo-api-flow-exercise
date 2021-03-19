@@ -29,7 +29,7 @@ export const getTodos = async (todo, request, response) => {
  */
 export const addTodo = async (todo, request, response) => {
   try {
-    const { description } = parseTodo(request, response);
+    const { description, reminder } = parseTodo(request, response);
     const newTodo = await todo.add(description);
     response.status(201).json({ todo: newTodo });
   } catch ({ message }) {
