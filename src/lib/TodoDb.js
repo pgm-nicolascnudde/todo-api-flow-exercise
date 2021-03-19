@@ -10,8 +10,9 @@ export default class TodoDb {
    * Adds a todo to our database
    *
    * @param {string} description
+   * @param {number} reminder
    */
-  async add(description) {
+  async add(description, reminder) {
     try {
       return await knexTodos('todos').insert({ description, reminder });
     } catch (e) {
@@ -24,11 +25,12 @@ export default class TodoDb {
    *
    * @param {string} id
    * @param {string} description
+   * @param {number} reminder
    */
   // eslint-disable-next-line
-  async update(id, description) {
+  async update(id, description, reminder) {
     try {
-      return await knexTodos('todos').where('id', id).update({ description });
+      return await knexTodos('todos').where('id', id).update({ description, reminder });
     } catch (e) {
       Logger.error(e.message);
     }
