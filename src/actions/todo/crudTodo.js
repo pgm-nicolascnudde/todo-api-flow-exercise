@@ -29,8 +29,13 @@ export const getTodos = async (todo, request, response) => {
  */
 export const addTodo = async (todo, request, response) => {
   try {
+<<<<<<< HEAD
     const { description } = parseTodo(request, response);
     const newTodo = await todo.add(description);
+=======
+    const { description, reminder } = parseTodo(request, response);
+    const newTodo = await todo.add(description, reminder);
+>>>>>>> feature/add_reminder
     response.status(201).json({ todo: newTodo });
   } catch ({ message }) {
     response.status(500).json({ error: message });
@@ -46,9 +51,15 @@ export const addTodo = async (todo, request, response) => {
  */
 export const updateTodo = async (todo, request, response) => {
   try {
+<<<<<<< HEAD
     const { description } = parseTodo(request);
     const { id } = request.params;
     const updatedTodo = await todo.update(id, description);
+=======
+    const { description, reminder } = parseTodo(request);
+    const { id } = request.params;
+    const updatedTodo = await todo.update(id, description, reminder);
+>>>>>>> feature/add_reminder
     response.status(200).json({ todo: updatedTodo });
   } catch ({ message }) {
     response.status(500).json({ error: message });
