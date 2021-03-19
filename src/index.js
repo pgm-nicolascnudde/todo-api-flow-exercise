@@ -9,6 +9,7 @@ import Logger from './lib/Logger.js';
 import authenticate from './actions/auth/index.js';
 import registerTodoEndpoints from './actions/todo/registerTodoEndpoints.js';
 import middleware from './middleware/index.js';
+import dayjs from 'dayjs';
 
 // create a new express application
 const app = Express();
@@ -32,3 +33,6 @@ app.use('/auth', authenticate);
 app.listen(process.env.PORT, () => {
   Logger.warning(`Server started on port ${process.env.PORT}`);
 });
+
+const now = dayjs();
+console.log(now);
